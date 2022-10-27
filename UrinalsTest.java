@@ -8,7 +8,7 @@ public class UrinalsTest {
     @Test
     public void testString()
     {
-        String res= "Prathyu";
+        String res= "0101001";
         assertEquals(true,u.goodString(res));
         System.out.println("======PRATHYUSHA==TEST ONE EXECUTED========");
     }
