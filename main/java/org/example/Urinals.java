@@ -1,5 +1,5 @@
 package org.example;
-import java.util.*;
+import java.util.Scanner;
 import java.io.File;
 import java.io.*;
 
@@ -48,8 +48,21 @@ public class Urinals {
         try{
             Urinals u1=new Urinals();
             File f=new File(filepath);
-            Scanner sc=new Scanner(f);
+
+            if(f==null)
+                throw new IOException();
+
+            File cf=new File("src/fileCount.txt");
+            if(cf==null)
+                throw new IOException();
+            Scanner c = new Scanner(cf);
+            int counter=Integer.parseInt(c.nextLine());
+
             String optFile="src/rule.txt";
+            if(counter!=0)
+                optFile="src/rule"+counter+".txt";
+
+            Scanner sc=new Scanner(f);
             while(sc.hasNextLine()){
                 String str=sc.nextLine();
                 if(str.equals("-1")) break;
@@ -57,6 +70,13 @@ public class Urinals {
                 u1.write_To_File(optFile,uri_cnt);
                 System.out.println(uri_cnt);
                 }
+            FileWriter cw=new FileWriter("src/fileCount.txt");
+            if(cw==null)
+                throw new IOException();
+            cw.write(Integer.toString(counter+1));
+            cw.close();
+            System.out.println("Output is successfully written to rule file"+optFile);
+
         }
 
         catch(IOException e)
