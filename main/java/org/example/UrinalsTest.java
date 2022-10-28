@@ -21,6 +21,17 @@ public class UrinalsTest {
         assertEquals(-1,uri.countUrinals("011"));
         System.out.println("=======Prathyusha==Test two executed========");
     }
+    @Test
+    public void testOpenFile(){
+        assertEquals(1,uri.open_File("src/urinal.dat"));
+        System.out.println("=======Prathyusha==Test three executed========");
+    }
 
+    @Test
+    public void testWriteToFile(){
+        String optFile="src/rule.txt";
+        assertEquals(1,uri.write_To_File(optFile,3));
+        System.out.println("=======Prathyusha==Test four executed========");
+    }
 
 }

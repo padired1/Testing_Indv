@@ -31,20 +31,22 @@ public class Urinals {
         }
 
     }
-    public void write_To_File(String optfile,int uri_cnt){
+    public int write_To_File(String optfile,int uri_cnt){
         try {
             FileWriter w = new FileWriter(optfile, true);
             BufferedWriter bufwri=new BufferedWriter(w);
             bufwri.write(Integer.toString(uri_cnt));
             bufwri.newLine();
             bufwri.close();
+            return 1;
         }
         catch(IOException e){
             System.out.println("Error in opening output file");
             e.printStackTrace();
+            return 0;
         }
     }
-    public void open_File(String filepath) {
+    public int open_File(String filepath) {
         try{
             Urinals u1=new Urinals();
             File f=new File(filepath);
@@ -68,21 +70,20 @@ public class Urinals {
                 if(str.equals("-1")) break;
                 int uri_cnt = u1.countUrinals(str);
                 u1.write_To_File(optFile,uri_cnt);
-                System.out.println(uri_cnt);
                 }
             FileWriter cw=new FileWriter("src/fileCount.txt");
             if(cw==null)
                 throw new IOException();
             cw.write(Integer.toString(counter+1));
             cw.close();
-            System.out.println("Output is successfully written to rule file"+optFile);
+            return 1;
 
         }
-
         catch(IOException e)
         {
             System.out.println("Error in opening");
             e.printStackTrace();
+            return 0;
         }
 
     }
