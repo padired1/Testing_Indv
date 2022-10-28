@@ -1,2 +1,2 @@
-In men's public toilets with urinals, there is a rule that you leave at least one urinal free between you and 
+Men's public toilets with urinals, there is a rule that you leave at least one urinal free between you and 
 the next person peeing. Now we are designing a java program that takes the urinals status as input and gives the count of empty urinals as output
